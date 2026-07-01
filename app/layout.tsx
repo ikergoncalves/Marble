@@ -21,6 +21,13 @@ export const metadata: Metadata = {
   title: 'Marble — Digital Design Assets',
   description:
     'Marble is a curated marketplace for premium digital design assets — UI kits, templates, icon sets, and fonts for designers and developers.',
+  openGraph: {
+    title: 'Marble — Digital Design Assets',
+    description:
+      'A curated marketplace for premium digital design assets — UI kits, templates, icon sets, and fonts for designers and developers.',
+    siteName: 'Marble',
+    type: 'website',
+  },
 };
 
 /**

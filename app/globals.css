@@ -79,3 +79,13 @@ h4 {
   flex: 1 1 auto;
   width: 100%;
 }
+
+/* Page section: centered content column with consistent vertical rhythm. Home
+   sections compose this with their own module classes for section-specific
+   styling. */
+.section {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: var(--space-12) var(--space-4);
+}
