@@ -1,0 +1,65 @@
+.footer {
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4) var(--space-6);
+}
+
+.brandBlock {
+  max-width: 320px;
+}
+
+.brand {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-neutral-900);
+}
+
+.tagline {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.links {
+  display: flex;
+  gap: var(--space-5);
+}
+
+.link {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+  transition: color 120ms ease;
+}
+
+.link:hover {
+  color: var(--color-neutral-900);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.builtWith {
+  color: var(--color-neutral-400);
+}
