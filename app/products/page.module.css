@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+.title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-neutral-900);
+}
+
+.subtitle {
+  max-width: 60ch;
+  font-size: var(--font-size-md);
+  color: var(--color-neutral-600);
+}
+
+.loading {
+  padding: var(--space-12) 0;
+  color: var(--color-neutral-500);
+}

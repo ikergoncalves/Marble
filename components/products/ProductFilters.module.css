@@ -1,0 +1,61 @@
+.filters {
+  margin-bottom: var(--space-8);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+/* The collapse toggle only makes sense on narrow screens; on desktop the fields
+   are always visible so the trigger is hidden. */
+.toggle {
+  display: none;
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.field {
+  flex: 1 1 180px;
+  min-width: 180px;
+}
+
+.priceGroup {
+  display: flex;
+  gap: var(--space-3);
+  flex: 1 1 260px;
+}
+
+/* Let the two price inputs share the group evenly and shrink cleanly. */
+.priceGroup > * {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .toggle {
+    display: inline-flex;
+  }
+
+  .fields {
+    display: none;
+  }
+
+  .fieldsOpen {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
