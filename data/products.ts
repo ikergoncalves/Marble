@@ -463,6 +463,11 @@ export function getProductBySlug(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
 
+/** Find a single product by its stable `id` (e.g. `p01`). Used by the cart, which keys line items on `Product.id`. */
+export function getProductById(id: string): Product | undefined {
+  return products.find((product) => product.id === id);
+}
+
 /** All products belonging to a given category. */
 export function getProductsByCategory(category: ProductCategory): Product[] {
   return products.filter((product) => product.category === category);

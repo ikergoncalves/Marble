@@ -6,6 +6,8 @@ import { Badge, Button, NumberInput, useToast } from 'chiselui';
 import type { Product } from '@/lib/types';
 import { getCategory } from '@/data/categories';
 import { formatCompactNumber, formatCurrency } from '@/lib/format';
+import { useCartStore } from '@/lib/store/cart';
+import { useUiStore } from '@/lib/store/ui';
 import { StarRating } from '@/components/product/StarRating';
 import styles from './ProductPurchaseCard.module.css';
 
@@ -31,6 +33,8 @@ function licenseLabel(license: Product['license']): string {
  */
 export function ProductPurchaseCard({ product }: ProductPurchaseCardProps) {
   const { toast } = useToast();
+  const addItem = useCartStore((state) => state.addItem);
+  const openCart = useUiStore((state) => state.openCart);
   const [quantity, setQuantity] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
 
@@ -38,18 +42,21 @@ export function ProductPurchaseCard({ product }: ProductPurchaseCardProps) {
   const { price, discountPrice } = product;
 
   const handleAddToCart = useCallback(() => {
-    // ── Phase 5 will replace the body below with a real cart-store action. ──
-    // Keep the quantity + toast wiring; only the "persist" step is a stub today.
+    // Persist the line to the cart store (keyed on the stable product id).
+    addItem(product.id, quantity);
+
     const noun = quantity === 1 ? 'copy' : 'copies';
     toast({
       message: `Added ${quantity} ${noun} of ${product.name} to cart`,
       variant: 'success',
     });
 
-    // Briefly flip the button into a confirmed state for a satisfying beat.
+    // Briefly flip the button into a confirmed state for a satisfying beat, and
+    // slide the cart open so the addition is immediately visible.
     setJustAdded(true);
     window.setTimeout(() => setJustAdded(false), 1600);
-  }, [product.name, quantity, toast]);
+    openCart();
+  }, [addItem, openCart, product.id, product.name, quantity, toast]);
 
   return (
     <div className={styles.card}>

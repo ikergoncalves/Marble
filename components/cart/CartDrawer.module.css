@@ -1,0 +1,173 @@
+/* ── Empty state ──────────────────────────────────────────────────────────── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 320px;
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+}
+
+.emptyIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-lg);
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-500);
+}
+
+.emptyTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+.emptyText {
+  max-width: 34ch;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+/* ── Body / perk progress ─────────────────────────────────────────────────── */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.perk {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.perkText {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-700);
+}
+
+.perkText strong {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+/* ── Item list ────────────────────────────────────────────────────────────── */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: var(--space-3);
+  align-items: start;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.thumbLink {
+  position: relative;
+  display: block;
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-neutral-100);
+}
+
+.thumb {
+  object-fit: cover;
+}
+
+.itemMain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.itemName {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-900);
+  transition: color 120ms ease;
+}
+
+.itemName:hover {
+  color: var(--color-primary);
+}
+
+.itemPrice {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+.itemControls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.itemLineTotal {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+  white-space: nowrap;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.subtotalRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.subtotalLabel {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-700);
+}
+
+.subtotalValue {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+.footerNote {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.checkoutButton {
+  width: 100%;
+  margin-top: var(--space-1);
+}
