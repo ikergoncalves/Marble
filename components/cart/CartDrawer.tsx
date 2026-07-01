@@ -8,20 +8,13 @@ import { Button, Drawer, NumberInput, Progress } from 'chiselui';
 import type { CartItem, Product } from '@/lib/types';
 import { getProductById } from '@/data/products';
 import { formatCurrency } from '@/lib/format';
+import { getVolumePerk, VOLUME_DISCOUNT_LABEL } from '@/lib/cart-perk';
 import { getCartTotal, useCartStore } from '@/lib/store/cart';
 import { useUiStore } from '@/lib/store/ui';
 import styles from './CartDrawer.module.css';
 
 /** Matches the per-line quantity ceiling used by ProductPurchaseCard. */
 const MAX_QUANTITY = 10;
-
-/**
- * Spend threshold that unlocks the volume perk. This is a *visual* goal only —
- * the discount is not applied to the subtotal yet (there's no checkout until
- * Phase 6). The progress bar simply nudges the shopper toward it.
- */
-const DISCOUNT_THRESHOLD = 150;
-const DISCOUNT_LABEL = '10% off';
 
 /** A resolved cart line: the stored item paired with its live catalog product. */
 interface CartLine {
@@ -57,10 +50,8 @@ export function CartDrawer() {
   const subtotal = getCartTotal(items);
   const isEmpty = lines.length === 0;
 
-  // Volume-perk progress (visual only — see DISCOUNT_THRESHOLD).
-  const remaining = Math.max(0, DISCOUNT_THRESHOLD - subtotal);
-  const progressValue = Math.min(100, (subtotal / DISCOUNT_THRESHOLD) * 100);
-  const perkUnlocked = remaining === 0;
+  // Volume-perk progress (visual only — see lib/cart-perk).
+  const { remaining, progressValue, unlocked: perkUnlocked } = getVolumePerk(subtotal);
 
   const goToProducts = () => {
     closeCart();
@@ -118,10 +109,10 @@ export function CartDrawer() {
           <div className={styles.perk}>
             <div className={styles.perkText}>
               {perkUnlocked ? (
-                <>🎉 You&apos;ve unlocked {DISCOUNT_LABEL} at checkout.</>
+                <>🎉 You&apos;ve unlocked {VOLUME_DISCOUNT_LABEL} at checkout.</>
               ) : (
                 <>
-                  Add <strong>{formatCurrency(remaining)}</strong> more to unlock {DISCOUNT_LABEL}.
+                  Add <strong>{formatCurrency(remaining)}</strong> more to unlock {VOLUME_DISCOUNT_LABEL}.
                 </>
               )}
             </div>

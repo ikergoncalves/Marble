@@ -1,0 +1,149 @@
+/* ── Two-column layout ────────────────────────────────────────────────────── */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.formColumn {
+  min-width: 0;
+}
+
+.summaryColumn {
+  min-width: 0;
+  /* Keep the order recap in view while filling in the form on desktop. */
+  position: sticky;
+  top: var(--space-6);
+}
+
+/* ── Loading / empty / placed states ──────────────────────────────────────── */
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 340px;
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+}
+
+.stateIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-lg);
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-500);
+}
+
+.stateTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+.stateText {
+  max-width: 40ch;
+  font-size: var(--font-size-md);
+  color: var(--color-neutral-600);
+}
+
+/* ── Confirmation modal body ──────────────────────────────────────────────── */
+.confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.confirmIcon {
+  display: inline-flex;
+  color: var(--color-primary);
+}
+
+.confirmLead {
+  font-size: var(--font-size-md);
+  color: var(--color-neutral-700);
+}
+
+.confirmLead strong {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+.confirmMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-neutral-50);
+}
+
+.confirmRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.confirmLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+.confirmValue {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+.confirmEmail {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+.confirmEmail strong {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-800);
+}
+
+.confirmButton {
+  width: 100%;
+  margin-top: var(--space-1);
+}
+
+.confirmNote {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.confirmLink {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.confirmLink:hover {
+  text-decoration: underline;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  /* On mobile, show the summary first so shoppers see what they're buying. */
+  .summaryColumn {
+    position: static;
+    order: -1;
+  }
+}
