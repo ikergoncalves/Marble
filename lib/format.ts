@@ -22,3 +22,17 @@ const compactNumberFormatter = new Intl.NumberFormat('en-US', {
 export function formatCompactNumber(value: number): string {
   return compactNumberFormatter.format(value);
 }
+
+const longDateFormatter = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  // Catalog dates are bare `YYYY-MM-DD` strings parsed as UTC midnight; format in
+  // UTC too so a viewer's timezone can never shift the displayed day.
+  timeZone: 'UTC',
+});
+
+/** Format an ISO date for display, e.g. `formatDate('2024-03-12')` → `"March 12, 2024"`. */
+export function formatDate(iso: string): string {
+  return longDateFormatter.format(new Date(iso));
+}

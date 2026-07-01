@@ -1,0 +1,11 @@
+.related {
+  margin-top: var(--space-12);
+}
+
+.title {
+  margin-bottom: var(--space-6);
+  font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+  color: var(--color-neutral-900);
+}
