@@ -5,6 +5,7 @@ import './globals.css';
 import { Providers } from './providers';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -18,14 +19,22 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Marble — Digital Design Assets',
+  // Resolves relative Open Graph / icon URLs against the production origin.
+  metadataBase: new URL(SITE_URL),
+  // `default` is used on the homepage; child pages set just their own title and
+  // the `template` appends the "— Marble" suffix, so it's never repeated by hand.
+  title: {
+    default: 'Marble — Digital Design Assets',
+    template: `%s — ${SITE_NAME}`,
+  },
   description:
     'Marble is a curated marketplace for premium digital design assets — UI kits, templates, icon sets, and fonts for designers and developers.',
   openGraph: {
     title: 'Marble — Digital Design Assets',
     description:
       'A curated marketplace for premium digital design assets — UI kits, templates, icon sets, and fonts for designers and developers.',
-    siteName: 'Marble',
+    siteName: SITE_NAME,
+    url: SITE_URL,
     type: 'website',
   },
 };

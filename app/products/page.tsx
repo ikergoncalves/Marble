@@ -4,7 +4,8 @@ import { ProductsBrowser } from '@/components/products/ProductsBrowser';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Products — Marble',
+  // Root layout's title template appends the "— Marble" suffix.
+  title: 'Products',
   description:
     'Browse Marble’s catalog of UI kits, templates, icon sets, and fonts. Filter by category, price, or keyword.',
 };

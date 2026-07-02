@@ -3,7 +3,8 @@ import { CheckoutView } from '@/components/checkout/CheckoutView';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Checkout — Marble',
+  // Root layout's title template appends the "— Marble" suffix.
+  title: 'Checkout',
   description: 'Review your order and complete your purchase of premium digital design assets.',
   // Transactional, cart-dependent page — keep it out of search indexes.
   robots: { index: false, follow: false },

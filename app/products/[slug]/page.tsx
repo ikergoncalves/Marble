@@ -26,11 +26,19 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: ProductPageParams): Metadata {
   const product = getProductBySlug(params.slug);
   if (!product) {
-    return { title: 'Product not found — Marble' };
+    // Title template still appends "— Marble".
+    return { title: 'Product not found' };
   }
   return {
-    title: `${product.name} — Marble`,
+    // Title template appends the "— Marble" suffix.
+    title: product.name,
     description: product.description,
+    openGraph: {
+      title: product.name,
+      description: product.description,
+      type: 'website',
+      images: [{ url: product.coverImage, alt: product.name }],
+    },
   };
 }
 
