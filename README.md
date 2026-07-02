@@ -120,5 +120,6 @@ npm run lint    # ESLint (next/core-web-vitals)
 
 ## License
 
-This project is a portfolio piece. The `chiselui` design system is published
-separately under the MIT license.
+This project is licensed under the MIT License — see [LICENSE](LICENSE) for
+details. The `chiselui` design system it's built on is published separately,
+also under the MIT license.
