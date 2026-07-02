@@ -61,5 +61,7 @@
 }
 
 .builtWith {
-  color: var(--color-neutral-400);
+  /* neutral-500 is the lightest neutral that still clears WCAG AA (4.5:1) for
+     this small text on the surface, in both light and dark themes. */
+  color: var(--color-neutral-500);
 }
