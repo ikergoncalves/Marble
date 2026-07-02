@@ -3,6 +3,7 @@
 import { Badge, Tabs } from 'chiselui';
 import type { License, Product, Review } from '@/lib/types';
 import { formatDate } from '@/lib/format';
+import { LICENSE_COPY, LICENSE_ORDER } from '@/lib/licenses';
 import { StarRating } from '@/components/product/StarRating';
 import styles from './ProductTabs.module.css';
 
@@ -10,27 +11,6 @@ export interface ProductTabsProps {
   product: Product;
   reviews: Review[];
 }
-
-/** Plain-language explanation of what each license tier permits. */
-const LICENSE_COPY: Record<License, { title: string; description: string }> = {
-  personal: {
-    title: 'Personal',
-    description:
-      'For personal, non-commercial work — portfolios, learning, and side projects that are not sold or monetized.',
-  },
-  commercial: {
-    title: 'Commercial',
-    description:
-      'For a single commercial project — one client site, product, or app that you or your company ships to end users.',
-  },
-  extended: {
-    title: 'Extended',
-    description:
-      'Unrestricted commercial use across unlimited projects, including work intended for resale or redistribution.',
-  },
-};
-
-const LICENSE_ORDER: License[] = ['personal', 'commercial', 'extended'];
 
 function OverviewPanel({ product }: { product: Product }) {
   return (

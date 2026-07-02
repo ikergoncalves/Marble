@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Gem, ShoppingBag } from 'lucide-react';
-import { Button, ThemeToggle } from 'chiselui';
+import { Button, ThemeToggle, Tooltip } from 'chiselui';
 import { getCartItemCount, useCartStore, useHasHydrated } from '@/lib/store/cart';
 import { useUiStore } from '@/lib/store/ui';
 import { CartDrawer } from '@/components/cart/CartDrawer';
@@ -10,7 +10,8 @@ import styles from './Header.module.css';
 
 const navLinks = [
   { href: '/products', label: 'Products' },
-  { href: '/categories', label: 'Categories' },
+  // Anchors to the "Shop by category" section on the homepage (id="categories").
+  { href: '/#categories', label: 'Categories' },
 ];
 
 /**
@@ -51,14 +52,22 @@ export function Header() {
         <div className={styles.actions}>
           <ThemeToggle />
           <span className={styles.cartButton}>
-            <Button
-              variant="ghost"
-              size="md"
-              aria-label={itemCount > 0 ? `Open cart, ${itemCount} items` : 'Open cart'}
-              onClick={openCart}
+            <Tooltip
+              content={
+                itemCount > 0
+                  ? `View cart (${itemCount} ${itemCount === 1 ? 'item' : 'items'})`
+                  : 'View cart'
+              }
             >
-              <ShoppingBag size={18} aria-hidden />
-            </Button>
+              <Button
+                variant="ghost"
+                size="md"
+                aria-label={itemCount > 0 ? `Open cart, ${itemCount} items` : 'Open cart'}
+                onClick={openCart}
+              >
+                <ShoppingBag size={18} aria-hidden />
+              </Button>
+            </Tooltip>
             {itemCount > 0 && (
               <span className={styles.cartBadge} aria-hidden>
                 {itemCount > 99 ? '99+' : itemCount}

@@ -1,10 +1,11 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import { Check, Download, FileType2, HardDrive, ShoppingCart } from 'lucide-react';
-import { Badge, Button, NumberInput, useToast } from 'chiselui';
+import { Check, Download, FileType2, HardDrive, Info, ShoppingCart } from 'lucide-react';
+import { Badge, Button, NumberInput, Tooltip, useToast } from 'chiselui';
 import type { Product } from '@/lib/types';
 import { getCategory } from '@/data/categories';
+import { LICENSE_COPY } from '@/lib/licenses';
 import { formatCompactNumber, formatCurrency } from '@/lib/format';
 import { useCartStore } from '@/lib/store/cart';
 import { useUiStore } from '@/lib/store/ui';
@@ -16,11 +17,6 @@ export interface ProductPurchaseCardProps {
 }
 
 const MAX_QUANTITY = 10;
-
-/** Human label for a license tier, e.g. `commercial` → `Commercial`. */
-function licenseLabel(license: Product['license']): string {
-  return license.charAt(0).toUpperCase() + license.slice(1);
-}
 
 /**
  * The buy box for a single product: title, rating, price, technical details, a
@@ -93,7 +89,20 @@ export function ProductPurchaseCard({ product }: ProductPurchaseCardProps) {
           <dt className={styles.detailLabel}>
             <ShoppingCart size={16} aria-hidden /> License
           </dt>
-          <dd className={styles.detailValue}>{licenseLabel(product.license)}</dd>
+          <dd className={styles.detailValue}>
+            <span className={styles.licenseValue}>
+              {LICENSE_COPY[product.license].title}
+              <Tooltip content={LICENSE_COPY[product.license].description}>
+                <button
+                  type="button"
+                  className={styles.licenseInfo}
+                  aria-label={`What the ${LICENSE_COPY[product.license].title} license allows`}
+                >
+                  <Info size={14} aria-hidden />
+                </button>
+              </Tooltip>
+            </span>
+          </dd>
         </div>
         <div className={styles.detail}>
           <dt className={styles.detailLabel}>
